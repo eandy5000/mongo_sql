@@ -12,7 +12,6 @@ $(document).ready(function(){
         url  : "/data",
         success : function(fooFoo) {
             people = fooFoo.zeta;
-            console.log(fooFoo.zeta);
             unwrapData(fooFoo);
 
         }
@@ -42,10 +41,11 @@ function unwrapData(data){
 
 for (var i = 0; i < data.zeta.length; i++){
     var arrayOfPeers = data.zeta[i];
+    var $el = $('.person').last();
     $('.main').append("<div class='person' id='" + i + "'</div>")
-    $('.person').last().append("<h1>"+arrayOfPeers.name+"</h1>");
-    $('.person').last().append("<h5>"+arrayOfPeers.github+"</h5>");
-    $('.person').last().append("<p1>"+arrayOfPeers.shoutout+"</p1>");
+    $el.append("<h1>"+arrayOfPeers.name+"</h1>");
+    $el.append("<h5>"+arrayOfPeers.github+"</h5>");
+    $el.append("<p1>"+arrayOfPeers.shoutout+"</p1>");
 
     }
 //unwrap end below
@@ -70,14 +70,16 @@ function createNavButtons(){
 function nextSlide(){
 
     incrementTracker();
-    console.log("index tracker ", indexTracker);
+    createNameDisplay(people, indexTracker);
+
 
    //nextslide ends below
 }
 
 function prevSlide(){
     decrementTracker();
-    console.log("index tracker ", indexTracker);
+    createNameDisplay(people, indexTracker);
+
     //prevslide ends below
 }
 
@@ -86,14 +88,13 @@ function incrementTracker(){
     var newTracker = (indexTracker + 1) % sliderCount;
     indexTracker = newTracker;
 
-    console.log("index tracker in + ", indexTracker);
+
     //increment tracker ends below
 }
 
 function decrementTracker(){
 
     var sliderCount = people.length;
-    console.log(typeof sliderCount);
     var newTracker = (indexTracker - 1) % sliderCount;
 
     if (newTracker < 0) {
@@ -101,8 +102,19 @@ function decrementTracker(){
     }
 
     indexTracker = newTracker;
-    console.log("index tracker in - ", indexTracker);
+
 
     //decrement tracker ends below
 }
+// trying to figure out why css isn't changing when .selected is added
+// background should turn yellow
 
+
+
+function createNameDisplay(array ,index){
+    var selected = indexTracker;
+$('#'+ selected +'').addClass('.selected');
+
+console.log("name display working");
+
+}
