@@ -7,3 +7,16 @@
     margin:0 5px;
     overflow: hidden;
 }
+
+.navigation {
+    float: left;
+    border: 2px solid green;
+    margin:5px auto;
+}
+
+.nav {
+    height: 20px;
+    width: 130px;
+    border: 2px solid black;
+
+}
