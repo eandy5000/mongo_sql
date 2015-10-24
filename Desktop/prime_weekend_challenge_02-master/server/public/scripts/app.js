@@ -10,9 +10,10 @@ $(document).ready(function(){
 
         type : "GET",
         url  : "/data",
-        success : function(zeta) {
-            people = zeta;
-            unwrapData(zeta);
+        success : function(fooFoo) {
+            people = fooFoo.zeta;
+            console.log(fooFoo.zeta);
+            unwrapData(fooFoo);
 
         }
 
@@ -92,6 +93,7 @@ function incrementTracker(){
 function decrementTracker(){
 
     var sliderCount = people.length;
+    console.log(typeof sliderCount);
     var newTracker = (indexTracker - 1) % sliderCount;
 
     if (newTracker < 0) {
