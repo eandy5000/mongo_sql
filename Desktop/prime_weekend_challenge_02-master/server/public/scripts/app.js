@@ -113,7 +113,12 @@ function decrementTracker(){
 
 function createNameDisplay(array ,index){
     var selected = indexTracker;
-$('#'+ selected +'').addClass('.selected');
+
+    for (var i = 0; i < people.length; i++) {
+    $('#' + i + '').removeClass('selected')
+    }
+
+    $( '#'+selected+'').addClass('selected');
 
 console.log("name display working");
 
