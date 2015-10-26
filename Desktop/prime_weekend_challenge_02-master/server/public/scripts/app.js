@@ -48,6 +48,7 @@ for (var i = 0; i < data.zeta.length; i++){
     $el.append("<p1>"+arrayOfPeers.shoutout+"</p1>");
 
     }
+    $( '#0').addClass('selected');
 //unwrap end below
 }
 
@@ -115,7 +116,7 @@ function createNameDisplay(array ,index){
     var selected = indexTracker;
 
     for (var i = 0; i < people.length; i++) {
-    $('#' + i + '').removeClass('selected')
+    $('#' + i + '').removeClass('selected');
     }
 
     $( '#'+selected+'').addClass('selected');
