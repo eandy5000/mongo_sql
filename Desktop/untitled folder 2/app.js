@@ -1,37 +1,12 @@
-$(document).ready(function(){
-console.log("hi");
 
-for (var i=0;i<10;i++)
-//change how you view the for loop if you want 1-10, rather than changing the for loop logic
+var express = require('express');
+var app = express();
+var path = require('path');
+app.set('port', (process.env.PORT || 8000));
 
-
-
-{
-	var index=i+1;
-$("#container").append("<div class='person'></div>")
-var $el= $("#container").children().last();
-$el.append('<p>'+ index + ". " +  'andy</p>');
-$el.append('<button class="changeButton">change</button>');
-
-var delayTime=i*500;
-
-$el.hide()
-	.delay(delayTime)
-	.slideDown(900, function(){
-	console.log("hi ", i);
-});
-//slideUp slideToggle slideDown
-
-}
-$('#container') .on ('click', '.changeButton', function(){
-	$(this).parent().toggleClass('selected');
-	//addClass removeClass toggleClass
-console.log("button working");
+app.get('/*', function (request, response){
+    var file = request.params[0] || "index.html";
+    response.sendFile(path.join(__dirname, "./public", file));
 });
 
-});
-
-//fadeIn fadeOut fadeToggle
-
-// $(this).css("background-color": "green");
-// above uses .css 
+app.listen(app.get("port"));
